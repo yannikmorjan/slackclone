@@ -4,4 +4,4 @@ export const THREADS = 'threads'; //messages to channel or chat
 export const CHATS = 'chats'; //chat between two users
 
 
-export const GUEST = 'V7yyPDgZtYepeluK89vlBHOPYIv1';
+export const GUEST = 'cE2ctWLdsvTx9TANlWt4WiuzDVH2';
