@@ -4,7 +4,7 @@
             <div>
                 <quill-editor formControlName="editor" #textEditor class="quill-text-editor" placeholder="Answers ..."
                     [style]="editorStyle" [modules]="quillModules" (onContentChanged)="maxLength($event)"
-                    (onEditorCreated)="getEditorInstance($event)">
+                    (onEditorCreated)="getEditorInstance($event); focusEditor()">
                 </quill-editor>
             </div>
 

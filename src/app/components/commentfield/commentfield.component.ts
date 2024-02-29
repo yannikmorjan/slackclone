@@ -76,6 +76,10 @@ export class CommentfieldComponent implements OnInit {
     this.getCurrentUserId();
   }
 
+  focusEditor() {
+    this.quillEditorRef.focus();
+  }
+
   /**
   * Function to remove the <img> tag from the editor content.
   */
