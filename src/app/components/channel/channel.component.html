@@ -60,6 +60,17 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="channel-reactions">
+                            <button *ngFor="let reaction of thread.reactions, let i = index" (click)="this.channelService.toggleReaction(thread, i)"
+                                [ngClass]="{'favorit': reaction.icon == 'favorite_border' && this.channelService.checkIfUserReacted(thread, i),
+                                            'like': reaction.icon == 'thumb_up' && this.channelService.checkIfUserReacted(thread, i),
+                                            'smily': reaction.icon == 'emoji_emotions' && this.channelService.checkIfUserReacted(thread, i)}">
+                                <span class="material-icons-outlined">
+                                    {{ reaction.icon }}
+                                </span>
+                                <span *ngIf="reaction.users.length > 0">{{ reaction.users.length }}</span>
+                            </button>
+                        </div>
                         <div *ngIf="thread.replies.length > 0">
                             <div class="posting-threads" (click)="this.channelService.openThread(thread)">
                                 <div class="posting-thread-preview" *ngFor="let preview of thread.replies | unique">
@@ -75,6 +86,7 @@
                                 <mat-icon class="posting-thread-navigate" fontIcon="navigate_next"></mat-icon>
                             </div>
                         </div>
+
                     </div>
 
                 </div>

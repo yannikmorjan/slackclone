@@ -7,6 +7,7 @@ export class Thread {
   channel: string; // channel id (#..........)
   images: string[]; // array of image urls
   replies: { user: string; date: Date; message: string; images: string[] }[]; // stores reply objects
+  reactions: { icon: string; users: string[] }[]; // stores reply objects
 
   constructor(obj?: any) {
     this.threadId = obj ? obj.threadId : '';
@@ -17,6 +18,7 @@ export class Thread {
     this.channel = obj ? obj.channel : '';
     this.images = obj ? obj.images : [];
     this.replies = obj ? obj.replies : '';
+    this.reactions = obj ? obj.reactions : '';
   }
 
   public toJSON?(): any {
@@ -42,6 +44,7 @@ export class Thread {
       channel: this.channel,
       images: this.images,
       replies: formattedReplies,
+      reactions: this.reactions,
     };
   }
 }

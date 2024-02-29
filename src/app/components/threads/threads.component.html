@@ -29,6 +29,17 @@
                             </div>
                         </div>
                     </div>
+                    <div class="channel-reactions">
+                        <button *ngFor="let reaction of this.channelService.activeThread.reactions, let i = index" (click)="this.channelService.toggleReaction(this.channelService.activeThread, i)"
+                            [ngClass]="{'favorit': reaction.icon == 'favorite_border' && this.channelService.checkIfUserReacted(this.channelService.activeThread, i),
+                                        'like': reaction.icon == 'thumb_up' && this.channelService.checkIfUserReacted(this.channelService.activeThread, i),
+                                        'smily': reaction.icon == 'emoji_emotions' && this.channelService.checkIfUserReacted(this.channelService.activeThread, i)}">
+                            <span class="material-icons-outlined">
+                                {{ reaction.icon }}
+                            </span>
+                            <span *ngIf="reaction.users.length > 0">{{ reaction.users.length }}</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 

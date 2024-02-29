@@ -115,3 +115,24 @@ body {
     background: $lightgrey;
   }
 }
+
+.favorit {
+  border-color: $red !important;
+  span {
+    color: $red !important;
+  }
+}
+
+.like {
+  border-color: $blue !important;
+  span {
+    color: $blue !important;
+  }
+}
+
+.smily {
+  border-color: $yellow !important;
+  span {
+    color: $yellow !important;
+  }
+}

@@ -343,6 +343,7 @@ export class FirestoreService {
     this.thread.time = thread.time;
     this.thread.content = thread.content;
     this.thread.channel = thread.channel;
+    this.thread.reactions = thread.reactions;
     this.thread.replies = thread.replies;
     this.thread.images = thread.images;
 
@@ -409,6 +410,21 @@ export class FirestoreService {
     const ref = doc(this.threadCollection, threadId);
     await updateDoc(ref, {
       replies: arrayUnion(arg),
+    });
+  }
+
+  /**
+   * updated reractions of a thread
+   * @param threadId - thread id string
+   * @param reactions - reactions object
+   */
+  async updateThreadReaction(
+    threadId: string,
+    reactions: []
+  ) {
+    const ref = doc(this.threadCollection, threadId);
+    await updateDoc(ref, {
+      reactions: reactions,
     });
   }
 

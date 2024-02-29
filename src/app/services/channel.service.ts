@@ -216,6 +216,11 @@ export class ChannelService {
       content: content,
       date: new Date(),
       images: imageURLs,
+      reactions: [
+        {icon: 'favorite_border', users: []},
+        {icon: 'thumb_up', users: []},
+        {icon: 'emoji_emotions', users: []}
+      ],
       replies: [],
       threadId: '',
       time: new Date(),
@@ -343,4 +348,32 @@ export class ChannelService {
     });
     this.imageURL = imageURL;
   }
+
+  /**
+   * toggled reaction button and updated it with the database
+   * @param thread - thread object
+   * @param i - index of thread.reactions object
+   */
+  toggleReaction(thread, i) {
+    if(this.checkIfUserReacted(thread, i)) {
+      thread.reactions[i].users.splice(thread.reactions[i].users.indexOf(this.userService.currentUserId$), 1)
+    } else { 
+      thread.reactions[i].users.push(this.userService.currentUserId$);
+    }
+    this.firestoreService.updateThreadReaction(thread.threadId, thread.reactions)
+    if(this.activeThread.threadId == thread.threadId) {
+      this.activeThread.reactions = thread.reactions;
+    }
+  }
+
+  /**
+   * checkes if curent user has reacted in thread
+   * @param thread - thread object
+   * @param i - index of thread.reactions object
+   * @returns - boalean
+   */
+  checkIfUserReacted(thread, i) {
+    return thread.reactions[i].users.includes(this.userService.currentUserId$)
+  }
+
 }

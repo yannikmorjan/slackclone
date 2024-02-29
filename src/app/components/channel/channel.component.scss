@@ -17,7 +17,7 @@
     left: 0;
     right: 0;
     padding: 0 16px;
-    color: #000000;
+    color: $black;
   }
 
   .channelTitle {
@@ -131,6 +131,38 @@
   }
 }
 
+.channel-reactions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: $grey;
+    cursor: pointer;
+    font-size: 16px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    gap: 4px;
+    width: 40px;
+    height: 20px;
+    
+    &:hover {
+      border-color: $lightgrey;
+      background: $darkgrey;
+    }
+
+    span{
+      color: $lightgrey;
+      font-size: 14px;
+    }
+  }
+}
+
 .posting {
   position: relative;
   display: flex;
@@ -222,6 +254,7 @@
     font-size: $regular;
     font-weight: 300;
     color: $textgrey;
+    margin-bottom: 4px;
 
     .posting-attachment {
       display: flex;

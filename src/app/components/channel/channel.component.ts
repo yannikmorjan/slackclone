@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { ChannelService } from 'src/app/services/channel.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { SearchService } from 'src/app/services/search.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-channel',
@@ -17,7 +18,8 @@ export class ChannelComponent implements OnInit, OnDestroy {
   constructor(
     public channelService: ChannelService,
     public firestoreService: FirestoreService,
-    public searchService: SearchService
+    public searchService: SearchService,
+    public userService: UsersService
   ) {
     this.observerThreadList = this.firestoreService.getThreadList();
     this.observerThreadList.subscribe((threads) => {
